@@ -1,1 +1,7 @@
-// Set up your application entry point here...
+import ReactDOM from 'react-dom';
+import React from 'react';
+
+ReactDOM.render(
+    <h1>Building...</h1>,
+    document.getElementById('app')
+);
