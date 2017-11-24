@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
+import Board from './Board';
 
 class App extends Component {
     constructor(props) {
         super(props);
 
-        this.updateCanvas = this.updateCanvas.bind(this);
+        this.state = {
+            h: 5,
+            w: 5,
+        };
+
+        this.changeIt = this.changeIt.bind(this);
     }
 
-    componentDidMount() {
-        this.updateCanvas();
-    }
-
-    updateCanvas() {
-        const ctx = this.refs.canvas.getContext('2d');
-        ctx.fillRect(0,0, 100, 100);
+    changeIt(){
+        this.setState( (prevState) => ({
+            h: prevState.h + 1,
+            w: prevState.w + 1,
+        }));
+        console.log(this.state);
     }
 
     render() {
         return(
-            <canvas ref="canvas" width={300} height={300}/>
+            <div>
+                <Board h={this.state.h} w={this.state.w}/>
+                <button onClick={this.changeIt}>change</button>
+            </div>
         );
     }
 }
