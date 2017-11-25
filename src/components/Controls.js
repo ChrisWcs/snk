@@ -16,7 +16,7 @@ const style = {
     }
 };
 
-const Controls = ({changeDirection}) => (
+const Controls = ({changeDirection, start}) => (
     <div style={style.column}>
         <div style={style.row}>
             <button onClick={changeDirection("up")}>up</button>
@@ -27,6 +27,9 @@ const Controls = ({changeDirection}) => (
         </div>
         <div style={style.row}>
             <button onClick={changeDirection("down")}>down</button>
+        </div>
+        <div style={style.row}>
+            <button onClick={start}>start</button>
         </div>
     </div>
 );
