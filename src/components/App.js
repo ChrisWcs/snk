@@ -9,9 +9,15 @@ class App extends Component {
         super(props);
 
         this.state = {
-            snake: [],
+            snake: [
+                {
+                    x: 10,
+                    y: 10,
+                }
+            ],
             food: {
-
+                x: 40,
+                y: 40,
             },
             direction: "right",
             isPlaying: false,
@@ -32,11 +38,16 @@ class App extends Component {
 
     start(){
         if(!this.state.isPlaying) {
-            const id = setInterval( () => {
-                this.setState( () => ({
+            this.setState( () => ({
+                isPlaying: true
+            }));
 
+            const id = setInterval( () => {
+                this.setState( (prevState) => ({
+                    snake: updateSnake( prevState.snake, prevState.food, prevState.direction, 100, 100),
                 }));
             }, 500);
+
             this.setState( () => ({
                 id,
             }));
