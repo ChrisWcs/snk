@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Board from './Board';
 import Controls from './Controls';
 
-import { updateSnake } from '../utils/utils';
+import { updateSnake, randomFood } from '../utils/utils';
 
 class App extends Component {
     constructor(props) {
@@ -16,8 +16,8 @@ class App extends Component {
                 }
             ],
             food: {
-                x: 40,
-                y: 40,
+                x: 20,
+                y: 20,
             },
             direction: "right",
             isPlaying: false,
@@ -43,9 +43,14 @@ class App extends Component {
             }));
 
             const id = setInterval( () => {
-                this.setState( (prevState) => ({
-                    snake: updateSnake( prevState.snake, prevState.food, prevState.direction, 50, 50),
-                }));
+                this.setState( (prevState) => {
+                    const newSnake = updateSnake( prevState.snake, prevState.food, prevState.direction, 25, 25);
+
+                    return {
+                        snake: newSnake,
+                        food: prevState.snake.length == newSnake.length ? prevState.food : randomFood(),
+                    };
+                });
             }, 200);
 
             this.setState( () => ({

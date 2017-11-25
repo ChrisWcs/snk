@@ -22,6 +22,11 @@ const advanceHead = (prevHead, direction) => {
     }
 };
 
+export const randomFood = () => ({
+    x: Math.floor(Math.random() * 25),
+    y: Math.floor(Math.random() * 25),
+});
+
 export const updateSnake = ( snake, food, direction, height, width ) => {
     let newHead = advanceHead(snake[0], direction);
 

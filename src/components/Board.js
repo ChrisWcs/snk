@@ -25,10 +25,10 @@ class Board extends Component {
         const {snake, food} = this.props;
         ctx.fillStyle = 'rgb(0,0,0)';
         snake.forEach( (b) => {
-            ctx.fillRect(b.x * 10, b.y * 10, 10, 10);
+            ctx.fillRect(b.x * 20, b.y * 20, 20, 20);
         });
         ctx.fillStyle = 'rgb(200,0,0)';
-        ctx.fillRect(food.x * 10, food.y * 10, 10, 10);
+        ctx.fillRect(food.x * 20, food.y * 20, 20, 20);
     }
 
     render() {
