@@ -36,6 +36,7 @@ const Controls = ({changeDirection, start}) => (
 
 Controls.propTypes = {
     changeDirection: PropTypes.func,
+    start: PropTypes.func,
 };
 
 export default Controls;

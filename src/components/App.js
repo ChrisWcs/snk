@@ -33,7 +33,7 @@ class App extends Component {
             this.setState( () => ({
                 direction,
             }));
-        }
+        };
     }
 
     start(){
@@ -44,12 +44,13 @@ class App extends Component {
 
             const id = setInterval( () => {
                 this.setState( (prevState) => ({
-                    snake: updateSnake( prevState.snake, prevState.food, prevState.direction, 100, 100),
+                    snake: updateSnake( prevState.snake, prevState.food, prevState.direction, 50, 50),
                 }));
-            }, 500);
+            }, 200);
 
             this.setState( () => ({
                 id,
+                isPlaying: true
             }));
 
         } else {
@@ -61,7 +62,7 @@ class App extends Component {
         return(
             <div>
                 <Board snake={this.state.snake} food={this.state.food}/>
-                <Controls changeDirection={this.changeDirection}/>
+                <Controls changeDirection={this.changeDirection} start={this.start}/>
             </div>
         );
     }
