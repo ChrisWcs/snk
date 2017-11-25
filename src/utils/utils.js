@@ -30,18 +30,18 @@ export const updateSnake = ( snake, food, direction, height, width ) => {
         return [];
     }
 
+    for(let i = 0; i < snake.length; i++){
+        if(newHead.x == snake[i].x && newHead.y == snake[i].y){
+            return [];
+        }
+    }
+
     let newBody;
 
     if( newHead.x == food.x && newHead.y == food.y){
         newBody = [ newHead, ...snake];
     } else {
         newBody = [ newHead, ...snake.slice(0, snake.length - 1)];
-    }
-
-    for(let i = 1; i < newBody.length; i++){
-        if(newBody[0].x == newBody[i].x && newBody[0].y == newBody[i].y){
-            return [];
-        }
     }
 
     return newBody;
